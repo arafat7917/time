@@ -150,6 +150,7 @@
       let minuts = date.getMinutes();
       let seconds = date.getSeconds();
       let days = date.getDay();
+      let fullYear = date.getFullYear();
       let preiod = 'PM';
 
 
@@ -170,7 +171,7 @@
 
       for (let i = 0; i <= getWeek.length - 1; i++) {
         if (i === days) {
-          today.innerHTML = `${getWeek[i]}`
+          today.innerHTML = `${getWeek[i]} - ${fullYear}`
 
         }
       }
