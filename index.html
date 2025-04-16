@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=\\, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    /* overflow-x: hidden; */
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+  body {
+    /* height: 100vh; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #today {
+    margin: 2rem 0;
+  }
+
+  #isha {
+    /* display: flex; */
+    /* text-align: center; */
+    margin: 20%;
+    /* justify-content: center; */
+  }
+
+  #time,
+  #today,
+  #isha {
+    text-align: center;
+    font-size: 4rem;
+    background: rgb(255, 0, 200);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 10px;
+    border: 2px solid rgb(255, 0, 149);
+    width: 90%;
+    border-radius: .5rem;
+    color: rgb(255, 255, 255);
+    position: relative;
+    backdrop-filter: blur(30px);
+
+  }
+
+  #time::before {
+    content: '';
+    background-color: rgba(255, 7, 57, 0.699);
+    width: 15rem;
+    height: 10rem;
+    z-index: 12;
+    position: absolute;
+    left: 5;
+    top: -20px;
+    border-radius: 50%;
+    z-index: -1;
+    filter: blur(20px);
+  }
+
+
+  #time::after {
+    content: '';
+    background-color: rgba(255, 136, 0, 0.486);
+    width: 15rem;
+    height: 10rem;
+    z-index: 12;
+    position: absolute;
+    right: 10px;
+    top: -100px;
+    border-radius: 50%;
+    z-index: -2;
+    filter: blur(20px);
+  }
+
+
+
+  #isha::before {
+    content: '';
+    background-color: rgba(255, 7, 57, 0.699);
+    width: 15rem;
+    height: 10rem;
+    z-index: 12;
+    position: absolute;
+    left: 5;
+    top: -20px;
+    border-radius: 50%;
+    z-index: -1;
+    filter: blur(20px);
+  }
+
+
+  #isha::after {
+    content: '';
+    background-color: rgba(255, 136, 0, 0.486);
+    width: 15rem;
+    height: 10rem;
+    z-index: 12;
+    position: absolute;
+    right: 10px;
+    top: -100px;
+    border-radius: 50%;
+    z-index: -2;
+    filter: blur(20px);
+  }
+
+  @media (width <=826px) {
+
+    #time,
+    #today,
+    #isha {
+      font-size: 2rem;
+    }
+  }
+</style>
+
+<body>
+  <div id="today">
+    toDay
+  </div>
+  <div id="time">
+    00:00:00
+  </div>
+
+  <!-- <div id="isha">
+    Nusrat Sultana Isha
+  </div> -->
+
+  <script>
+    const time = document.getElementById('time');
+    const today = document.getElementById('today');
+    const timeSpeed = 1000;
+
+    setInterval(() => {
+      const getWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Suterday']
+      const date = new Date();
+      let hours = date.getHours();
+      let minuts = date.getMinutes();
+      let seconds = date.getSeconds();
+      let days = date.getDay();
+      let preiod = 'PM';
+
+
+      function setZero(e) {
+        return e < 10 ? '0' + e : e;
+      }
+      hours = setZero(hours);
+      minuts = setZero(minuts);
+      seconds = setZero(seconds);
+
+      if (hours <= 12) {
+        preiod = 'AM';
+
+        if (hours == 0) {
+          hours = 12;
+        }
+      }
+
+      for (let i = 0; i <= getWeek.length - 1; i++) {
+        if (i === days) {
+          today.innerHTML = `${getWeek[i]}`
+
+        }
+      }
+
+
+      time.innerHTML = `${hours} : ${minuts} : ${seconds} ${preiod}`
+    }, timeSpeed);
+  </script>
+
+</body>
+
+</html>
